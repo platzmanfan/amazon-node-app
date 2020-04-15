@@ -45,7 +45,7 @@ function showAllProducts(){
 
 // creating the prompts to ask for id and stock how many unit they want
 
-function searchProductsId(){
+function searchProductsId(quantity){
     inquirer.
     prompt([
         {
@@ -60,8 +60,8 @@ function searchProductsId(){
     }
             ])
     .then(function(answer){
-        console.log(answer.id);  // should be commented 
-        console.log(answer.stock_quantity); // should be commented
+        // console.log(answer.id);  // should be commented 
+        // console.log(answer.stock_quantity); // should be commented
         
         connection.query("SELECT * FROM products WHERE ?" , {id:answer.id} , function(err,res){
             if (err) throw err;
@@ -70,20 +70,31 @@ function searchProductsId(){
            
                 
             if (res[i].stock_quantity >= answer.stock_quantity){
-                console.log(res[i].product_name);
-                console.log(res[i].stock_quantity - answer.stock_quantity);
+                console.log(res[i].product_name);// should be commented
+                console.log("-----------------------");
+                console.log("THERE ARE " + (res[i].stock_quantity - answer.stock_quantity) ,res[i].product_name+ "  Left in our stock");
+                console.log("---------------------------\n");
+                console.log("TOTAL COST IS GONNA BE  "+ "|"+(res[i].price * answer.stock_quantity) +"$")
+                
             }
            else{
                console.log("Insufficient quantity!");
            } 
             
             }
-            
+          
         });
+        updateDB(stock_quantity);
     });
     
 }
+function updateDB(){
 
+    connection.query("UPDATE stock_quantity from products SET ?"  [stock_quantity], function(err,res){
+        if (err) throw err;
+        console.log(res.affectedRows + "products updated");
+    })
+}
 
 
 
