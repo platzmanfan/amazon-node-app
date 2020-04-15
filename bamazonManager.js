@@ -3,6 +3,7 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
 
+
 // creating a connection to our database and getting an object
 
 var connection = mysql.createConnection({
@@ -43,6 +44,9 @@ choices:[
         case "View Low Inventory":
             viewLowInventory();
             break;  
+        case "Add to Inventory":
+            addToInventory();
+            break;   
         case "Add New Product":
             createNewProduct();
             break;
@@ -57,11 +61,13 @@ choices:[
 function viewProducts(){
     connection.query("SELECT * from products", function(err,res){
         if (err) throw err;
+        
         for (var i =0;i<res.length;i++){
             console.log("ID |  " +res[i].id+ "| NAME: "+ res[i].product_name + " | PRICE : "+ res[i].price + " |   QUANTITY : "+res[i].stock_quantity)
         }
     })
 }
+    
 function viewLowInventory(){
     connection.query("SELECT * from products", function(err,res){
         if(err) throw err;
@@ -73,6 +79,49 @@ function viewLowInventory(){
         }
         
     })
+}
+function addToInventory(){
+    viewProducts();
+    inquirer.prompt([
+       { name:"id",
+         type:"input",
+         message: "What item you want to add more to the stock?! (CHOOSE ID)"
+    
+    },
+    {
+        name:"stock_quantity",
+        type:"input",
+        message:"How many would you like to add up to the stock?!\n"
+    }
+    ])
+    .then(function(ans){
+        connection.query("SELECT * FROM products WHERE ?" , [{id:ans.id},{stock_quantity:ans.stock_quantity}] , function(err,res){
+            if (err) throw err;
+            
+            
+            for (var i=0;i<res.length;i++){
+                var stock = res[i].stock_quantity;
+
+            
+        
+                console.log("---------------------------\n");
+        
+           
+            var number = parseInt(ans.stock_quantity);
+            var addMore = stock + number;
+            console.log(addMore);
+            
+            
+        
+            }
+            // connection.query for update  
+            connection.query("UPDATE products SET stock_quantity = ? WHERE id =?",[addMore,ans.id],function(err,res){
+                if(err )throw err;
+                console.log(res.affectedRows +  " The product stock has been updated ");
+            })   
+        });
+    
+   });
 }
 function createNewProduct(){
     inquirer.prompt([
@@ -105,7 +154,9 @@ function createNewProduct(){
         
             },function(err){
                 if (err) throw err;
+                console.log("--------------------\n");
                 console.log("YOUR PRODUCT WAS ADDED SUCCESFULLY!")
+                searchChoice();
             }
         );
     });
