@@ -102,22 +102,17 @@ function addToInventory(){
             for (var i=0;i<res.length;i++){
                 var stock = res[i].stock_quantity;
 
-            
-        
                 console.log("---------------------------\n");
         
-           
             var number = parseInt(ans.stock_quantity);
             var addMore = stock + number;
-            console.log(addMore);
-            
-            
+            console.log(addMore); 
         
             }
             // connection.query for update  
             connection.query("UPDATE products SET stock_quantity = ? WHERE id =?",[addMore,ans.id],function(err,res){
                 if(err )throw err;
-                console.log(res.affectedRows +  " The product stock has been updated ");
+                console.log(res.affectedRows +  "  Product stock has been updated ");
             })   
         });
     

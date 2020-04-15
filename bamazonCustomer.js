@@ -72,7 +72,7 @@ function searchProductsId(){
                 var result = res[i].stock_quantity - answer.stock_quantity;
             if (res[i].stock_quantity >= answer.stock_quantity){
                 result = res[i].stock_quantity - answer.stock_quantity;
-                console.log(res[i].product_name);// should be commented
+                // console.log(res[i].product_name);// 
                 console.log("-----------------------");
                 console.log("THANK YOU DOING BUSINESS WITH US\n")
                 console.log("THERE ARE " + result ,res[i].product_name+ "  Left in our stock");
