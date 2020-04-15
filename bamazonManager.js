@@ -66,6 +66,7 @@ function viewProducts(){
             console.log("ID |  " +res[i].id+ "| NAME: "+ res[i].product_name + " | PRICE : "+ res[i].price + " |   QUANTITY : "+res[i].stock_quantity)
         }
     })
+    
 }
     
 function viewLowInventory(){
@@ -79,6 +80,7 @@ function viewLowInventory(){
         }
         
     })
+    searchChoice();
 }
 function addToInventory(){
     viewProducts();
@@ -106,8 +108,7 @@ function addToInventory(){
         
             var number = parseInt(ans.stock_quantity);
             var addMore = stock + number;
-            console.log(addMore); 
-        
+            
             }
             // connection.query for update  
             connection.query("UPDATE products SET stock_quantity = ? WHERE id =?",[addMore,ans.id],function(err,res){
@@ -151,7 +152,7 @@ function createNewProduct(){
                 if (err) throw err;
                 console.log("--------------------\n");
                 console.log("YOUR PRODUCT WAS ADDED SUCCESFULLY!")
-                searchChoice();
+                
             }
         );
     });

@@ -79,22 +79,22 @@ function searchProductsId(){
                 console.log("---------------------------\n");
                 console.log("YOUR TOTAL COST IS GONNA BE  "+ " = "+(res[i].price * answer.stock_quantity) +"$\n")
                 
-            }
-           else{
-               console.log("Insufficient quantity!");
-           }   
-            }
-         
-
-        connection.query("UPDATE products SET stock_quantity =? WHERE id =? ",[result,answer.id], function(err,res){
+          connection.query("UPDATE products SET stock_quantity =? WHERE id =? ",[result,answer.id], function(err,res){
             if (err) throw err;
             
             console.log(res.affectedRows + "  updated product/s in our Database");
                 //  console.log(res.stock_quantity);
             
-           
+    
 
         })
+
+            }
+           else{
+               console.log("Insufficient quantity!");
+           }   
+            }
+        
         
     });  
 }); 

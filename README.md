@@ -71,5 +71,7 @@ Both files are using prompt so it will ask the user for info about the product o
 
 ## when user decide to add completely new product it's gonna ask him few questions about the name,deparment name, price, stock ! upon entering all of these it's gonna be updated our mySql and the new product it's gonna be ready for sale!
 
+# link to the bamazonCustomer.js app video how it works
 
+[bamazonCustomer.js] https://drive.google.com/file/d/1bqmfj6IaRuYRP7NEY3hySnrHx4IiZKg4/view
 
