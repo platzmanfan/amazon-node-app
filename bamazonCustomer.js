@@ -41,17 +41,18 @@ function showAllProducts(){
             console.log("ID |" +res[i].id + " |  NAME: | "  + res[i].product_name + " |  PRICE: | "+ res[i].price+"$");
         }
     });
+    
 }
 
 // creating the prompts to ask for id and stock how many unit they want
 
-function searchProductsId(quantity){
+function searchProductsId(){
     inquirer.
     prompt([
         {
         name: "id",
         type: "input",
-        message: "Type the ID of the product you would like to buy?"
+        message: "Enter the ID of the product you would like to buy?"
     },
     {
         name: "stock_quantity",
@@ -68,32 +69,35 @@ function searchProductsId(quantity){
             
             for (var i = 0;i<res.length; i++){
            
-                
+                var result = res[i].stock_quantity - answer.stock_quantity;
             if (res[i].stock_quantity >= answer.stock_quantity){
+                result = res[i].stock_quantity - answer.stock_quantity;
                 console.log(res[i].product_name);// should be commented
                 console.log("-----------------------");
-                console.log("THERE ARE " + (res[i].stock_quantity - answer.stock_quantity) ,res[i].product_name+ "  Left in our stock");
+                console.log("THANK YOU DOING BUSINESS WITH US")
+                console.log("THERE ARE " + result ,res[i].product_name+ "  Left in our stock");
                 console.log("---------------------------\n");
-                console.log("TOTAL COST IS GONNA BE  "+ "|"+(res[i].price * answer.stock_quantity) +"$")
+                console.log("YOUR TOTAL COST IS GONNA BE  "+ "|   "+(res[i].price * answer.stock_quantity) +"$")
                 
             }
            else{
                console.log("Insufficient quantity!");
-           } 
-            
+           }   
             }
-          
-        });
-        updateDB(stock_quantity);
-    });
-    
-}
-function updateDB(){
+         
 
-    connection.query("UPDATE stock_quantity from products SET ?"  [stock_quantity], function(err,res){
-        if (err) throw err;
-        console.log(res.affectedRows + "products updated");
-    })
+        connection.query("UPDATE products SET stock_quantity =? WHERE id =? ",[result,answer.id], function(err,res){
+            if (err) throw err;
+            
+            console.log(res.affectedRows + " updated products");
+                //  console.log(res.stock_quantity);
+            
+           
+
+        })
+        
+    });  
+}); 
 }
 
 
