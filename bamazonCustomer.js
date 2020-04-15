@@ -74,10 +74,10 @@ function searchProductsId(){
                 result = res[i].stock_quantity - answer.stock_quantity;
                 console.log(res[i].product_name);// should be commented
                 console.log("-----------------------");
-                console.log("THANK YOU DOING BUSINESS WITH US")
+                console.log("THANK YOU DOING BUSINESS WITH US\n")
                 console.log("THERE ARE " + result ,res[i].product_name+ "  Left in our stock");
                 console.log("---------------------------\n");
-                console.log("YOUR TOTAL COST IS GONNA BE  "+ "|   "+(res[i].price * answer.stock_quantity) +"$")
+                console.log("YOUR TOTAL COST IS GONNA BE  "+ " = "+(res[i].price * answer.stock_quantity) +"$\n")
                 
             }
            else{
@@ -89,7 +89,7 @@ function searchProductsId(){
         connection.query("UPDATE products SET stock_quantity =? WHERE id =? ",[result,answer.id], function(err,res){
             if (err) throw err;
             
-            console.log(res.affectedRows + " updated products");
+            console.log(res.affectedRows + "  updated product/s in our Database");
                 //  console.log(res.stock_quantity);
             
            
