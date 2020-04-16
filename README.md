@@ -75,3 +75,11 @@ Both files are using prompt so it will ask the user for info about the product o
 
 [bamazonCustomer.js] https://drive.google.com/file/d/1bqmfj6IaRuYRP7NEY3hySnrHx4IiZKg4/view
 
+
+
+
+
+# link to the bamazonManager.js app video how it works
+
+[bamazonManager.js] https://drive.google.com/file/d/1bqmfj6IaRuYRP7NEY3hySnrHx4IiZKg4/view
+
