@@ -28,58 +28,58 @@ Both files are using prompt so it will ask the user for info about the product o
 
 # Orgranizations of the app
 
-## bamazonCustomer.js
+### bamazonCustomer.js
 
-### First i created variable for the modules (mysql and inquier)
-### Established connection to my database and returned and object
-### used that object to call connect function
-### inside connect callbaack function im calling my other functions!
-### i have create function that is gonna display all the items from the database 
-### i created a functon that is gonna find stock  quantity of certain item and reduce by the amount the person ordered
-### updated the sql for the amount the person entered
-
-
-## running bamazonCustomer.js
-
-### node bamazonCustomer.js gives us the app running and it first displays all items inside and give us prompt where it ask the user which item to choose to from to buy
-### after the user chooses id , it gives us another prompt where it ask us how many of those he wants
-### at the end program update the mysql database and tell the customer how much is that gonna cost him
-### if the stock is lower than the order it's gonna be print "Insuffficient Stock"
-
-## below i will provide the link to the video to how the app runs
+*  First i created variable for the modules (mysql and inquier)
+*  Established connection to my database and returned and object
+*  used that object to call connect function
+*  inside connect callbaack function im calling my other functions!
+* i have create function that is gonna display all the items from the database 
+*  i created a functon that is gonna find stock  quantity of certain item and reduce by the amount the person ordered
+*  updated the sql for the amount the person entered
 
 
-## bamazonManager.js
+### running bamazonCustomer.js
 
-## this program gonna take the same mysql database that i worked prior
+* node bamazonCustomer.js gives us the app running and it first displays all items inside and give us prompt where it ask the user which item to choose to from to buy
+* after the user chooses id , it gives us another prompt where it ask us how many of those he wants
+* at the end program update the mysql database and tell the customer how much is that gonna cost him
+* if the stock is lower than the order it's gonna be print "Insuffficient Stock"
 
-## i created connection and call the connect function from the object
-## then i created prompt with list where the user is gonna be asked what he wants to choose:
+ below i will provide the link to the video to how the app runs
+
+
+### bamazonManager.js
+
+* this program gonna take the same mysql database that i worked prior
+
+* i created connection and call the connect function from the object
+*  then i created prompt with list where the user is gonna be asked what he wants to choose:
 1. View Products for Sale
 2. View Low Inventory
 3. Add to Inventory
 4. Add New Product
 
-## Then i created switch function which is gonna be called whatever is choose from
-## i created 4 functions that is gonna be called in each of the switch cases
+####  Then i created switch function which is gonna be called whatever is choose from
+ i created 4 functions that is gonna be called in each of the switch cases
 
-## When user choose to view the products it's gonna display the: id,name,department_name,price,stock of the products
+* When user choose to view the products it's gonna display the: id,name,department_name,price,stock of the products
 
-## When user choose to view low inventory it's gonna display the items with less than 5 stock quantity in the databse
+* When user choose to view low inventory it's gonna display the items with less than 5 stock quantity in the databse
 
-## when user decide to add to inventort it's gonna give us prompt where it's gonna ask the user for id of the product! When the user chooses id then it ask him how many he would like to add up to the stock!  Then it update our mySql Database!
+* when user decide to add to inventort it's gonna give us prompt where it's gonna ask the user for id of the product! When the user chooses id then it ask him how many he would like to add up to the stock!  Then it update our mySql Database!
 
-## when user decide to add completely new product it's gonna ask him few questions about the name,deparment name, price, stock ! upon entering all of these it's gonna be updated our mySql and the new product it's gonna be ready for sale!
+* when user decide to add completely new product it's gonna ask him few questions about the name,deparment name, price, stock ! upon entering all of these it's gonna be updated our mySql and the new product it's gonna be ready for sale!
 
-# link to the bamazonCustomer.js app video how it works
-
-[bamazonCustomer.js] https://drive.google.com/file/d/1bqmfj6IaRuYRP7NEY3hySnrHx4IiZKg4/view
-
+ link to the bamazonCustomer.js app video how it works 
+ [ here](https://drive.google.com/file/d/1bqmfj6IaRuYRP7NEY3hySnrHx4IiZKg4/view)
 
 
 
 
-# link to the bamazonManager.js app video how it works
 
-[bamazonManager.js] https://drive.google.com/file/d/1Gy6kfN8edh463bvsrnyFNM4wyIpBpqbc/view
+
+ link to the bamazonManager.js app video how it works
+ [here](https://drive.google.com/file/d/1Gy6kfN8edh463bvsrnyFNM4wyIpBpqbc/view)
+
 
